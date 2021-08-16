@@ -1231,6 +1231,17 @@ extern "C" {
 #define SDL_HINT_TOUCH_MOUSE_EVENTS    "SDL_TOUCH_MOUSE_EVENTS"
 
 /**
+ *  \brief  A variable controlling whether which touch device events should generate synthetic mouse events
+ *
+ *  This variable can be set to the following values:
+ *    "0"       - All touch devices should generate touch events. Default
+ *    "1"       - Only direct touch devices should generate touch events
+ *
+ *  By default SDL will generate mouse events for all touch devices
+ */
+#define SDL_HINT_TOUCH_MOUSE_EVENTS_DIRECT_ONLY    "SDL_TOUCH_MOUSE_EVENTS_DIRECT_ONLY"
+
+/**
  *  \brief  A variable controlling whether the Android / tvOS remotes
  *  should be listed as joystick devices, instead of sending keyboard events.
  *

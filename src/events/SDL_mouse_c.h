@@ -95,6 +95,7 @@ typedef struct
     SDL_bool touch_mouse_events;
     SDL_bool mouse_touch_events;
     SDL_bool was_touch_mouse_events; /* Was a touch-mouse event pending? */
+    SDL_bool touch_mouse_events_direct_only;
 
     /* Data for double-click tracking */
     int num_clickstates;

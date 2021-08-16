@@ -110,6 +110,14 @@ SDL_TouchMouseEventsChanged(void *userdata, const char *name, const char *oldVal
 }
 
 static void SDLCALL
+SDL_TouchMouseEventsDirectOnlyChanged(void *userdata, const char *name, const char *oldValue, const char *hint)
+{
+    SDL_Mouse *mouse = (SDL_Mouse *)userdata;
+
+    mouse->touch_mouse_events_direct_only = SDL_GetStringBoolean(hint, SDL_FALSE);
+}
+
+static void SDLCALL
 SDL_MouseTouchEventsChanged(void *userdata, const char *name, const char *oldValue, const char *hint)
 {
     SDL_Mouse *mouse = (SDL_Mouse *)userdata;
@@ -149,6 +157,9 @@ SDL_MouseInit(void)
 
     SDL_AddHintCallback(SDL_HINT_TOUCH_MOUSE_EVENTS,
                         SDL_TouchMouseEventsChanged, mouse);
+
+    SDL_AddHintCallback(SDL_HINT_TOUCH_MOUSE_EVENTS_DIRECT_ONLY,
+                        SDL_TouchMouseEventsDirectOnlyChanged, mouse);
 
     SDL_AddHintCallback(SDL_HINT_MOUSE_TOUCH_EVENTS,
                         SDL_MouseTouchEventsChanged, mouse);
