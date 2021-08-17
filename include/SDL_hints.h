@@ -1234,8 +1234,8 @@ extern "C" {
  *  \brief  A variable controlling whether which touch device events should generate synthetic mouse events
  *
  *  This variable can be set to the following values:
- *    "0"       - All touch devices should generate touch events. Default
- *    "1"       - Only direct touch devices should generate touch events
+ *    "0"       - All touch devices should generate mouse events. Default
+ *    "1"       - Only direct touch devices should generate mouse events
  *
  *  By default SDL will generate mouse events for all touch devices
  */
