@@ -254,9 +254,9 @@ SDL_SendTouch(SDL_TouchID id, SDL_FingerID fingerid, SDL_Window * window,
 
 #if SYNTHESIZE_TOUCH_TO_MOUSE
     /* SDL_HINT_TOUCH_MOUSE_EVENTS: controlling whether touch events should generate synthetic mouse events */
+    /* SDL_HINT_TOUCH_MOUSE_EVENTS_DIRECT_ONLY: controlling whether only direct touch devices should generate synthetic mouse events */
     {
         if (mouse->touch_mouse_events && (!mouse->touch_mouse_events_direct_only || touch->type == SDL_TOUCH_DEVICE_DIRECT) ) {
-            /* FIXME: maybe we should only restrict to a few SDL_TouchDeviceType */
             if (id != SDL_MOUSE_TOUCHID) {
                 if (window) {
                     if (down) {
