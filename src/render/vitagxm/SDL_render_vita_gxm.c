@@ -898,6 +898,8 @@ SetDrawState(VITA_GXM_RenderData *data, const SDL_RenderCommand *cmd)
         float y_scale = -(sh);
         float y_off = viewport->y + sh;
 
+        set_clip_rectangle(data, viewport->x, viewport->y, viewport->x + viewport->w, viewport->y + viewport->h);
+        sceGxmSetRegionClip(data->gxm_context, SCE_GXM_REGION_CLIP_OUTSIDE, viewport->x, viewport->y, viewport->x+viewport->w-1, viewport->y+viewport->h-1);
         sceGxmSetViewport(data->gxm_context, x_off, x_scale, y_off, y_scale, 0.5f, 0.5f);
 
         if (viewport->w && viewport->h) {
@@ -915,7 +917,8 @@ SetDrawState(VITA_GXM_RenderData *data, const SDL_RenderCommand *cmd)
 
     if (data->drawstate.cliprect_enabled_dirty) {
         if (!data->drawstate.cliprect_enabled) {
-            unset_clip_rectangle(data);
+            const SDL_Rect *viewport = &data->drawstate.viewport;
+            set_clip_rectangle(data, 0, 0, viewport->w, viewport->h);
         }
         data->drawstate.cliprect_enabled_dirty = SDL_FALSE;
     }
